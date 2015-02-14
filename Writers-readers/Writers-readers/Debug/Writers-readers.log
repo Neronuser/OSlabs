@@ -1,0 +1,13 @@
+﻿Build started 09-Feb-15 4:16:21 PM.
+     1>Project "c:\Users\Roma\documents\visual studio 2012\Projects\Writers-readers\Writers-readers\Writers-readers.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "wr-re.cpp"
+         wr-re.cpp
+       Link:
+         D:\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"c:\users\roma\documents\visual studio 2012\Projects\Writers-readers\Debug\Writers-readers.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"c:\users\roma\documents\visual studio 2012\Projects\Writers-readers\Debug\Writers-readers.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"c:\users\roma\documents\visual studio 2012\Projects\Writers-readers\Debug\Writers-readers.lib" /MACHINE:X86 "Debug\wr-re.obj"
+         Writers-readers.vcxproj -> c:\users\roma\documents\visual studio 2012\Projects\Writers-readers\Debug\Writers-readers.exe
+     1>Done Building Project "c:\Users\Roma\documents\visual studio 2012\Projects\Writers-readers\Writers-readers\Writers-readers.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.45
