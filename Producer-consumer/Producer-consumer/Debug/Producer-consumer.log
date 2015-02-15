@@ -1,0 +1,14 @@
+﻿Build started 15-Feb-15 5:57:10 PM.
+     1>Project "c:\Users\Roma\documents\visual studio 2012\Projects\Producer-consumer\Producer-consumer\Producer-consumer.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "pr-cons.cpp"
+         pr-cons.cpp
+     1>c:\users\roma\documents\visual studio 2012\projects\producer-consumer\producer-consumer\pr-cons.cpp(46): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+       Link:
+         D:\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"c:\users\roma\documents\visual studio 2012\Projects\Producer-consumer\Debug\Producer-consumer.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"c:\users\roma\documents\visual studio 2012\Projects\Producer-consumer\Debug\Producer-consumer.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"c:\users\roma\documents\visual studio 2012\Projects\Producer-consumer\Debug\Producer-consumer.lib" /MACHINE:X86 "Debug\pr-cons.obj"
+         Producer-consumer.vcxproj -> c:\users\roma\documents\visual studio 2012\Projects\Producer-consumer\Debug\Producer-consumer.exe
+     1>Done Building Project "c:\Users\Roma\documents\visual studio 2012\Projects\Producer-consumer\Producer-consumer\Producer-consumer.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:15.78
