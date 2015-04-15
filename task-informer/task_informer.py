@@ -2,12 +2,15 @@ import psutil, mmap, time
 from tkinter import *
 import tkinter.ttk as ttk
 
+#import psutil, mmap, time
+#from Tkinter import *
+#import ttk
+
 class Task(Frame):
     def __init__(self, parent):
         Frame.__init__(self, parent, background="white")
         self.parent = parent
         self.initUI()
-        self.sortByThis = None
         j=0
         self.nouids=False
         self.getInfo()
@@ -17,7 +20,7 @@ class Task(Frame):
             j=j+1
             self._build_tree()
             self.container.update()
-            time.sleep(5)
+            time.sleep(10)
             del(self.processes[:])
             self.tree.delete(*self.tree.get_children())
 
@@ -50,10 +53,10 @@ class Task(Frame):
                     pinfo['cpu_percent']=proc.cpu_percent(interval=None)
                 except psutil.AccessDenied:
                     pinfo['cpu_percent']="---"
-                    if(pinfo["memory_percent"]==None):
-                        pinfo["memory_percent"]="---"
-                    p_tuple=(pinfo["pid"],pinfo["name"],pinfo['cpu_percent'],pinfo['status'],pinfo['memory_percent'])
-                    self.processes.append(p_tuple)
+                if(pinfo["memory_percent"]==None):
+                    pinfo["memory_percent"]="---"
+                p_tuple=(pinfo["pid"],pinfo["name"],pinfo['cpu_percent'],pinfo['status'],pinfo['memory_percent'])
+                self.processes.append(p_tuple)
             else:
                 if(pinfo["memory_percent"]==None):
                     pinfo["memory_percent"]="---"
@@ -78,13 +81,13 @@ class Task(Frame):
     def _build_tree(self):
         for col in self.col_header:
             self.tree.heading(col, text=col.title(), command=lambda c=col: self.sortby(self.tree, c, 1))
-            self.tree.column(col, width=int(800/6))
+            self.tree.column(col, width=int(800/5))
 
         for item in self.processes:
             self.tree.insert('', 'end', values=item)
 
     def sortby(self,tree, col, descending):
-        data = [(tree.set(child, col), child) for child in tree.get_children('')]
+        data = [(float(tree.set(child, col)), child) for child in tree.get_children('')]
         data.sort(reverse=descending)
         for ix, item in enumerate(data):
             tree.move(item[1], '', ix)
