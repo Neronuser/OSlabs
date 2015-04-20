@@ -1,0 +1,31 @@
+__author__ = 'roman'
+import os
+
+inodes = {}
+for root, dirs, files in os.walk("/Users/roman/"):
+    for f in files:
+        try:
+            st = os.stat(os.path.join(root, f))
+            try:
+                if not (os.path.join(root, f) in inodes[st.st_ino]):
+                    inodes[st.st_ino].append(os.path.join(root, f))
+            except KeyError:
+                inodes[st.st_ino]=[os.path.join(root,f)]
+        except FileNotFoundError:
+            pass
+    for d in dirs:
+        try:
+            st = os.stat(os.path.join(root, f))
+            try:
+                if not (os.path.join(root, f) in inodes[st.st_ino]):
+                    inodes[st.st_ino].append(os.path.join(root, f))
+            except KeyError:
+                inodes[st.st_ino]=[os.path.join(root,f)]
+        except FileNotFoundError:
+            pass
+
+for item in inodes.items():
+    if len(item[1])>2:
+        print("Inode " + str(item[0]) + " files:")
+        for i in item[1]:
+            print(i)
