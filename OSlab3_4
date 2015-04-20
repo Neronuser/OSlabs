@@ -1,0 +1,65 @@
+__author__ = 'Roma'
+
+import os, time, sys
+from stat import *
+#import pwd
+import win32security
+
+def getInfo(filenames):
+    templ = "%-25s %-75s %-10s %-25s %-7s %-9s %-5s %-5s %-s"
+    print(templ % ("Filename", "Filepath", "File size", "Time modified", "UserID", "Username", "Read", "Write", "Execute"))
+    #for root, dirs, files in os.walk("/Users/roman"):
+    for root, dirs, files in os.walk("F:\\"):
+        for name in dirs:
+            if name in filenames:
+                for foundroot, founddirs, foundfiles in os.walk(os.path.join(root, name)):
+                    for f in foundfiles:
+                        try:
+                            st = os.stat(os.path.join(foundroot, f))
+                        except IOError:
+                            print(os.path.join(foundroot, f))
+                            print("Failed")
+                        else:
+                            newpath = os.path.join(foundroot, f)
+                            open (newpath, "r").close ()
+                            sd = win32security.GetFileSecurity (newpath, win32security.OWNER_SECURITY_INFORMATION)
+                            owner_sid = sd.GetSecurityDescriptorOwner()
+                            winname, domain, type = win32security.LookupAccountSid (None, owner_sid)
+                            print(templ % (
+                            f,
+                            newpath,
+                            st[ST_SIZE],
+                            time.asctime(time.localtime(st[ST_MTIME])),
+                            st[ST_UID],
+                            #pwd.getpwuid(st[ST_UID])[0],
+                            winname,
+                            os.access(newpath, os.R_OK),
+                            os.access(newpath, os.W_OK),
+                            os.access(newpath, os.X_OK)))
+
+        for f_name in files:
+            if f_name in filenames:
+                try:
+                    st = os.stat(os.path.join(root, f_name))
+                except IOError:
+                    print(os.path.join(root, f_name))
+                    print("Failed")
+                else:
+                    newpath = os.path.join(root, f_name)
+                    open (newpath, "r").close ()
+                    sd = win32security.GetFileSecurity (newpath, win32security.OWNER_SECURITY_INFORMATION)
+                    owner_sid = sd.GetSecurityDescriptorOwner()
+                    winname, domain, type = win32security.LookupAccountSid (None, owner_sid)
+                    print(templ % (
+                    f_name,
+                    newpath,
+                    st[ST_SIZE],
+                    time.asctime(time.localtime(st[ST_MTIME])),
+                    st[ST_UID],
+                    #pwd.getpwuid(st[ST_UID])[0],
+                    winname,
+                    os.access(newpath, os.R_OK),
+                    os.access(newpath, os.W_OK),
+                    os.access(newpath, os.X_OK)))
+
+getInfo(sys.argv[1:])
